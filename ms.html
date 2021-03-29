@@ -1,0 +1,947 @@
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .navigation,
+        .navigation * {
+            box-sizing: border-box;
+        }
+
+        .navigation nav {
+            font-family: Hind, Helvetica, Arial, PingFang HK, Microsoft JhengHei, STHeiti, 华文黑体, SimHei, 黑体, sans-serif;
+        }
+
+        .navigation nav.sticky {
+            position: relative;
+            /* position: fixed;
+            top: 0;
+            left: 0; */
+            z-index: 100;
+            background-color: #009a3e;
+        }
+
+        @media (max-width: 991px) {
+            .navigation nav.sticky {
+                background-color: white;
+            }
+        }
+
+        .navigation nav {
+            height: 100px;
+            background-color: transparent;
+            width: 100%;
+            font-size: .9375rem;
+            color: grey;
+            font-weight: 600;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .navigation nav {
+                height: 60px;
+                color: #0a4915;
+            }
+        }
+
+        .navigation .center-block-center {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        @media (min-width: 576px) {
+            .navigation .container {
+                max-width: 540px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            .navigation .container {
+                max-width: 720px;
+            }
+        }
+
+        @media (min-width: 992px) {
+            .navigation .container {
+                max-width: 960px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .navigation .container {
+                max-width: 1140px;
+            }
+        }
+
+        .navigation .container {
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .navigation .row {
+            display: -webkit-box;
+            display: flex;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+
+        .navigation .align-self-center {
+            align-self: center !important;
+        }
+
+        .navigation .col,
+        .navigation .col-1,
+        .navigation .col-2,
+        .navigation .col-3,
+        .navigation .col-4,
+        .navigation .col-5,
+        .navigation .col-6,
+        .navigation .col-7,
+        .navigation .col-8,
+        .navigation .col-9,
+        .navigation .col-10,
+        .navigation .col-11,
+        .navigation .col-12,
+        .navigation .col-auto,
+        .navigation .col-lg,
+        .navigation .col-lg-1,
+        .navigation .col-lg-2,
+        .navigation .col-lg-3,
+        .navigation .col-lg-4,
+        .navigation .col-lg-5,
+        .navigation .col-lg-6,
+        .navigation .col-lg-7,
+        .navigation .col-lg-8,
+        .navigation .col-lg-9,
+        .navigation .col-lg-10,
+        .navigation .col-lg-11,
+        .navigation .col-lg-12,
+        .navigation .col-lg-auto,
+        .navigation .col-md,
+        .navigation .col-md-1,
+        .navigation .col-md-2,
+        .navigation .col-md-3,
+        .navigation .col-md-4,
+        .navigation .col-md-5,
+        .navigation .col-md-6,
+        .navigation .col-md-7,
+        .navigation .col-md-8,
+        .navigation .col-md-9,
+        .navigation .col-md-10,
+        .navigation .col-md-11,
+        .navigation .col-md-12,
+        .navigation .col-md-auto,
+        .navigation .col-sm,
+        .navigation .col-sm-1,
+        .navigation .col-sm-2,
+        .navigation .col-sm-3,
+        .navigation .col-sm-4,
+        .navigation .col-sm-5,
+        .navigation .col-sm-6,
+        .navigation .col-sm-7,
+        .navigation .col-sm-8,
+        .navigation .col-sm-9,
+        .navigation .col-sm-10,
+        .navigation .col-sm-11,
+        .navigation .col-sm-12,
+        .navigation .col-sm-auto,
+        .navigation .col-xl,
+        .navigation .col-xl-1,
+        .navigation .col-xl-2,
+        .navigation .col-xl-3,
+        .navigation .col-xl-4,
+        .navigation .col-xl-5,
+        .navigation .col-xl-6,
+        .navigation .col-xl-7,
+        .navigation .col-xl-8,
+        .navigation .col-xl-9,
+        .navigation .col-xl-10,
+        .navigation .col-xl-11,
+        .navigation .col-xl-12,
+        .navigation .col-xl-auto {
+            position: relative;
+            width: 100%;
+            min-height: 1px;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+
+        .navigation .col-4,
+        .navigation .col-5 {
+            -webkit-box-flex: 0;
+        }
+
+        .navigation .col-5 {
+            flex: 0 0 41.66667%;
+            max-width: 41.66667%;
+        }
+
+        .navigation ol,
+        .navigation ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        .navigation .text-transform--uppercase {
+            text-transform: uppercase;
+        }
+
+        .navigation .justify-content-around {
+            justify-content: space-around !important;
+        }
+
+        .navigation nav ul.menu-item__list {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            color: #fff;
+        }
+
+        .navigation nav.is--dark a,
+        .navigation nav.sticky.active ul.menu-item__list {
+            color: #000;
+        }
+
+        .navigation ol li,
+        .navigation ul li {
+            list-style: none;
+            padding: 0;
+            margin: .5rem 0;
+        }
+
+        .navigation a {
+            color: #000;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .navigation .nuxt-link-active,
+        .navigation .nuxt-link-exact-active {
+            color: #009a3e;
+        }
+
+        #navigation-desktop.navigation nav a {
+            color: #fff;
+        }
+
+        #navigation-mobile.navigation nav a {
+            color: #0a4915;
+        }
+
+        .navigation nav a.nuxt-link-exact-active,
+        .navigation nav a:hover {
+            /* color: #009a3e; */
+        }
+
+        .navigation nav.sticky.active a {
+            color: #000;
+        }
+
+        .navigation nav.sticky.active a.nuxt-link-exact-active,
+        .navigation nav.sticky.active a:hover {
+            /* color: #009a3e; */
+        }
+
+        .navigation .col-2 {
+            flex: 0 0 16.66667%;
+            max-width: 16.66667%;
+        }
+
+        .navigation col-2,
+        .navigation .col-3 {
+            -webkit-box-flex: 0;
+        }
+
+        .navigation .align-self-center {
+            align-self: center !important;
+        }
+
+        .navigation .text-align--center {
+            text-align: center;
+        }
+
+        .navigation nav .logo__container img {
+            height: 59px;
+            width: auto;
+            -webkit-transition: all .3s cubic-bezier(.17, .67, .43, .99);
+            transition: all .3s cubic-bezier(.17, .67, .43, .99);
+        }
+
+        .navigation nav .submenu__content {
+            position: absolute;
+            width: 100%;
+            top: -9999px;
+            left: 0;
+            z-index: 99;
+            padding: 2.75rem 0;
+        }
+
+        .navigation .cursor--pointer {
+            cursor: pointer;
+        }
+
+        .navigation .background-color--white {
+            background-color: #fff;
+        }
+
+        .navigation nav .submenu__content .nav-product__container {
+            max-height: 500px;
+        }
+
+        .navigation .col-3 {
+            flex: 0 0 25%;
+            max-width: 25%;
+        }
+
+        .navigation .col-4 {
+            flex: 0 0 33.33333%;
+            max-width: 33.33333%;
+        }
+
+        .navigation nav .submenu__content .submenu-product__item {
+            opacity: 0;
+            position: absolute;
+            top: -100%;
+        }
+
+        .navigation nav .submenu__content .submenu-product__item.is--active {
+            opacity: 1;
+            position: relative;
+            top: 0;
+        }
+
+        .navi .spacing--single-left {
+            margin-left: 1.875rem;
+        }
+
+        .navigation nav li.lang {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            -webkit-box-pack: justify;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .navigation [class*=" faicon-"],
+        .navigation [class^=faicon-] {
+            font-family: icomoon-fontawesome !important;
+            speak: none;
+            font-style: normal;
+            font-weight: 400;
+            font-feature-settings: normal;
+            font-variant: normal;
+            text-transform: none;
+            line-height: 1;
+            display: inline-block;
+            vertical-align: middle;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .navigation .faicon-facebook,
+        .navigation .faicon-facebook-square,
+        .navigation .faicon-instagram,
+        .navigation .faicon-weibo,
+        .navigation .faicon-youtube {
+            font-weight: 400;
+        }
+
+        .navigation .cursor--pointer {
+            cursor: pointer;
+        }
+
+        .navigation nav i {
+            font-size: .75rem;
+        }
+
+        .navigation nav li.lang i {
+            font-size: .875rem;
+        }
+
+        .navigation nav li.lang i:before {
+            vertical-align: middle;
+        }
+
+        .navigation .faicon-facebook-square:before {
+            content: "\f082";
+        }
+
+        .navigation nav li.lang div:not(:first-child) {
+            margin-left: 1.875rem;
+        }
+
+        @font-face {
+            font-family: icomoon-fontawesome;
+            src: url(/fonts/39be3bd.eot);
+            src: url(/fonts/39be3bd.eot#iefix) format("embedded-opentype"), url(/fonts/9433749.ttf) format("truetype"), url(/fonts/4faa891.woff) format("woff"), url(/img/b213480.svg#icomoon) format("svg");
+            font-weight: 400;
+            font-style: normal
+        }
+
+        @media (min-width: 992px) {
+            #navigation-mobile {
+                display: none;
+            }
+        }
+
+        @media (max-width: 991px) {
+            #navigation-desktop {
+                display: none;
+            }
+        }
+
+        .navigation nav .mobile__menu {
+            height: inherit;
+        }
+
+        .navigation nav .mobile__menu .logo {
+            padding: 8px 0;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .navigation nav .mobile__menu .logo {
+                height: 60px;
+            }
+        }
+
+        .navigation nav .mobile__menu .logo img {
+            height: 100%;
+            width: auto;
+        }
+
+        .navigation nav .mobile__menu .menu__toggle {
+            cursor: pointer;
+        }
+
+        .navigation nav .mobile__menu .menu__toggle,
+        .navigation nav .mobile__menu .menu__toggle:after,
+        .navigation nav .mobile__menu .menu__toggle:before {
+            position: absolute;
+            display: block;
+            height: 2px;
+            background-color: #0a4915;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            left: 0;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+
+            .navigation nav .mobile__menu .menu__toggle,
+            .navigation nav .mobile__menu .menu__toggle:after,
+            .navigation nav .mobile__menu .menu__toggle:before {
+                width: 24px;
+            }
+        }
+
+        .navigation nav .mobile__menu .menu__toggle {
+            left: 15px;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+
+            .navigation nav .mobile__menu .menu__toggle,
+            .navigation nav .mobile__menu .menu__toggle:after,
+            .navigation nav .mobile__menu .menu__toggle:before {
+                width: 24px;
+            }
+        }
+
+        .navigation nav .mobile__menu .menu__toggle:after,
+        .navigation nav .mobile__menu .menu__toggle:before {
+            content: "";
+            top: auto;
+            -webkit-transform: translateY(0);
+            transform: translateY(0);
+        }
+
+        .navigation nav .mobile__menu .menu__toggle:before {
+            top: -7px;
+        }
+
+        .navigation nav .mobile__menu .menu__toggle:after {
+            bottom: -7px;
+        }
+
+        .navigation .background-color--white {
+            background-color: #fff;
+        }
+
+        .navigation nav .mobile__menu .mobile-menu__content {
+            width: 100vw;
+            position: fixed;
+            left: 0;
+            top: -10000px;
+            z-index: 1;
+            padding: 0 15px;
+            font-size: 16px;
+            overflow-y: scroll;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        @media (min-width: 768px) and (max-width: 991px) {
+            .navigation .mobile__menu .mobile-menu__content {
+                height: calc(100vh - 60px);
+            }
+        }
+
+        .navigation nav .mobile__menu .menu__toggle.active {
+            background-color: transparent;
+        }
+
+        .navigation nav .mobile__menu .menu__toggle.active:before {
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            top: 0;
+        }
+
+        .navigation nav .mobile__menu .menu__toggle.active:after {
+            -webkit-transform: rotate(45deg);
+            transform: rotate(45deg);
+            -webkit-transform-origin: center;
+            transform-origin: center;
+            bottom: 0;
+        }
+
+        .navigation nav .mobile__menu .mobile-menu__content.active {
+            top: auto;
+        }
+
+        .navigation nav .mobile__menu .mobile-menu__content ul>li {
+            padding: 20px 0;
+            border-bottom: 1px solid #ebebeb;
+        }
+
+        .navigation nav .mobile__menu .mobile-menu__content .social {
+            display: -webkit-box;
+            display: flex;
+            -webkit-box-orient: horizontal;
+            -webkit-box-direction: normal;
+            flex-direction: row;
+            text-align: center;
+            -webkit-box-pack: center;
+            justify-content: center;
+            margin-top: 24px;
+        }
+
+        .navigation nav .mobile__menu .mobile-menu__content .select-box,
+        .navigation nav .mobile__menu .mobile-menu__content .social.margin--fix {
+            margin: 34px auto 150px;
+        }
+
+        .navigation nav .mobile__menu .mobile-menu__content .social i {
+            font-size: 26px;
+            color: #000;
+            margin: 0 20px;
+        }
+
+        .navigation .select-box {
+            border: 1px solid #ececec;
+            padding: .4375rem .3125rem;
+            max-width: 200px;
+        }
+
+        .navigation select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            border-radius: 0;
+            padding: .5rem;
+            font-size: 14px;
+            border: none;
+            width: 100%;
+            background-color: #fff;
+        }
+
+        .navigation .text-color--gray-medium-light {
+            color: #d8d8d8;
+        }
+
+        .navigation .position--absolute {
+            position: absolute;
+        }
+
+        .navigation .select-box i {
+            right: 0;
+            top: 50%;
+            -webkit-transform: translateY(-50%);
+            transform: translateY(-50%);
+            font-size: 18px;
+        }
+
+        .navigation .position--relative {
+            position: relative;
+        }
+
+        .navigation .faicon-caret-down:before {
+            content: "\f0d7";
+        }
+
+        @media (max-width: 991px) {
+            .navigation .mobile__menu .select-box i {
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="navigation" id="navigation-desktop" data-v-b541cd72="">
+        <nav class="sticky" data-v-b541cd72="">
+            <div class="container center-block-center" data-v-b541cd72="">
+                <div class="row" data-v-b541cd72="">
+                    <div class="col-5 align-self-center" data-v-b541cd72="">
+                        <ul class="menu-item__list text-transform--uppercase justify-content-around" data-v-b541cd72="">
+                            <li data-v-b541cd72=""><a href="https://www.darlie.com.my/ms" class="nuxt-link-exact-active nuxt-link-active"
+                                    data-v-b541cd72="">LAMAN UTAMA</a></li>
+                            <li data-v-b541cd72=""><a href="https://www.darlie.com.my/ms/articles" data-v-b541cd72="" class="">Artikel</a></li>
+                            <li class="has--submenu spacing--single-right cursor--pointer" data-v-b541cd72=""><a
+                                    data-id="products" href="" aria-haspopup="true" aria-expanded="false"
+                                    data-v-b541cd72=""><span class="product-link" data-v-b541cd72="" href="https://www.darlie.com.my/ms/toothpaste">
+                                        PRODUK</span></a></li>
+                        </ul>
+                    </div>
+                    <div class="col-2 text-align--center logo__container align-self-center" data-v-b541cd72=""><a
+                            href="https://www.darlie.com.my/ms" class="nuxt-link-exact-active nuxt-link-active" data-v-b541cd72=""><img
+                                srcset="//cms-cdn.darlie.com.hk/media/8364/darlie-newlogo-138x59.png 1x, //cms-cdn.darlie.com.hk/media/8365/darlie-newlogo-276x118.png 2x"
+                                alt="Darlie logo" data-v-b541cd72=""></a></div>
+                    <div class="col-5 align-self-center" data-v-b541cd72="">
+                        <ul class="menu-item__list text-transform--uppercase" data-v-b541cd72="">
+                            <li class="spacing--single-left" data-v-b541cd72=""><a href="https://www.darlie.com.my/ms/oral-health"
+                                    data-v-b541cd72="" class="">
+                                    KESIHATAN MULUT
+                                </a></li>
+                            <li data-v-b541cd72=""><a href="https://www.darlie.com.my/ms/news" data-v-b541cd72="" class="">
+                                    TERKINI
+                                </a></li>
+                            <li class="lang" data-v-b541cd72=""><a href="https://www.facebook.com/DarlieMalaysia"
+                                    aria-label="Facebook" target="_blank" rel="noopener" class="text-decoration--none"
+                                    data-v-b541cd72="">
+                                    <div class="cursor--pointer" data-v-b541cd72=""><i class="faicon-facebook-square"
+                                            data-v-b541cd72=""></i></div>
+                                </a>
+                                <div data-id="lang" class="has--submenu cursor--pointer" data-v-b541cd72=""><a
+                                        data-id="lang" href="" aria-haspopup="true" aria-expanded="false"
+                                        data-v-b541cd72="">
+                                        bm <i class="faicon-caret-down" data-v-b541cd72=""></i></a></div>
+                                <div class="submenu__content background-color--white cursor--pointer"
+                                    data-v-b541cd72="">
+                                    <ul data-v-b541cd72="">
+                                        <li data-v-b541cd72=""><a href="/en" class="text-decoration--none"
+                                                data-v-b541cd72="">
+                                                en
+                                            </a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="submenu__content background-color--white cursor--pointer" data-v-b541cd72="">
+                <div class="container" data-v-b541cd72="">
+                    <div class="row" data-v-b541cd72="">
+                        <div class="col-3 nav-product__container" data-v-b541cd72="">
+                            <div id="0"
+                                class="nav-product__button text-align--center d-flex justify-content-center align-items-center is--short"
+                                style="height:null%;padding-top:10px;padding-bottom:-10px;" data-v-b541cd72=""><a
+                                    href="https://www.darlie.com.my/ms/products/toothpaste" aria-label="Ubat Gigi" class="text-decoration--none"
+                                    data-v-b541cd72="">
+                                    <picture data-v-b541cd72=""><img
+                                            srcset="https://cms-cdn.darlie.com.hk/media/8337/p-dda001hk-b-t.png"
+                                            alt="Ubat Gigi" class="is--full-100" data-v-b541cd72=""></picture>
+                                    <div class="button__link text-transform--uppercase padding--5-left padding--5-right"
+                                        data-v-b541cd72="">
+                                        Ubat Gigi <i class="faicon-caret-right" data-v-b541cd72=""></i></div>
+                                </a></div>
+                            <div id="1"
+                                class="nav-product__button text-align--center d-flex justify-content-center align-items-center is--short"
+                                style="height:null%;padding-top:10px;padding-bottom:-10px;" data-v-b541cd72=""><a
+                                    href="https://www.darlie.com.my/ms/products/toothbrush"
+                                    aria-label="Layari Semua Produk Berus Gigi Untuk Membersih Gigi | Darlie MY"
+                                    class="text-decoration--none" data-v-b541cd72="">
+                                    <picture data-v-b541cd72=""><img
+                                            srcset="https://cms-cdn.darlie.com.hk/media/3199/h-nav-toothbrush.png"
+                                            alt="Layari Semua Produk Berus Gigi Untuk Membersih Gigi | Darlie MY"
+                                            data-v-b541cd72="" class=""></picture>
+                                    <div class="button__link text-transform--uppercase padding--5-left padding--5-right"
+                                        data-v-b541cd72="">
+                                        Layari Semua Produk Berus Gigi Untuk Membersih Gigi | Darlie MY <i
+                                            class="faicon-caret-right" data-v-b541cd72=""></i></div>
+                                </a></div>
+                        </div>
+                        <div class="col-5" data-v-b541cd72="">
+                            <div id="0" class="row submenu-product__item" data-v-b541cd72="">
+                                <div class="col nav-product" data-v-b541cd72="">
+                                    <div class="nav-product__type text-transform--uppercase text-color--brand"
+                                        data-v-b541cd72="">MENGIKUT FUNGSI</div>
+                                    <ul class="text-transform--capitalize" data-v-b541cd72=""><a
+                                            href="https://www.darlie.com.my/ms/products/toothpaste/by-function/fresh-breath" data-v-b541cd72=""
+                                            class="">
+                                            <li data-v-b541cd72="">Nafas Segar</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothpaste/by-function/gum-and-teeth-care"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Penjagaan Gusi &amp; Gigi</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothpaste/by-function/teeth-whitening"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Pemutihan Gigi</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothpaste/by-function/kids-care" data-v-b541cd72=""
+                                            class="">
+                                            <li data-v-b541cd72="">Penjagaan Gigi Kanak-kanak</li>
+                                        </a></ul>
+                                </div>
+                                <div class="col-1 divider" data-v-b541cd72=""></div>
+                                <div class="col nav-product" data-v-b541cd72="">
+                                    <div class="nav-product__type text-transform--uppercase text-color--brand"
+                                        data-v-b541cd72="">MENGIKUT RANGKAIAN</div>
+                                    <ul class="text-transform--capitalize" data-v-b541cd72=""><a
+                                            href="https://www.darlie.com.my/ms/products/toothpaste/by-range/double-action" data-v-b541cd72=""
+                                            class="">
+                                            <li data-v-b541cd72="">Dwiaksi</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothpaste/by-range/gum-and-teeth-care"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Penjagaan Gusi &amp; Gigi</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothpaste/by-range/all-shiny-white"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">All Shiny White</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothpaste/by-range/freshn-brite" data-v-b541cd72=""
+                                            class="">
+                                            <li data-v-b541cd72="">Fresh'N Brite</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothpaste/by-range/kids" data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Kanak-Kanak</li>
+                                        </a></ul>
+                                </div>
+                            </div>
+                            <div id="1" class="row submenu-product__item" data-v-b541cd72="">
+                                <div class="col nav-product" data-v-b541cd72="">
+                                    <div class="nav-product__type text-transform--uppercase text-color--brand"
+                                        data-v-b541cd72="">MENGIKUT FUNGSI</div>
+                                    <ul class="text-transform--capitalize" data-v-b541cd72=""><a
+                                            href="https://www.darlie.com.my/ms/products/toothbrush/by-range/power-toothbrush" data-v-b541cd72=""
+                                            class="">
+                                            <li data-v-b541cd72="">Berus Gigi Elektrik</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothbrush/by-range/essential-clean"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Essential Clean</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothbrush/by-range/advanced-deep-clean"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Advanced Deep Clean</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothbrush/by-range/kids" data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Kanak-Kanak</li>
+                                        </a></ul>
+                                </div>
+                                <div class="col-1 divider" data-v-b541cd72=""></div>
+                                <div class="col nav-product" data-v-b541cd72="">
+                                    <div class="nav-product__type text-transform--uppercase text-color--brand"
+                                        data-v-b541cd72="">MENGIKUT JENIS BERUS</div>
+                                    <ul class="text-transform--capitalize" data-v-b541cd72=""><a
+                                            href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/slim-tip-bristles"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Bulu Berus Hujung Tirus</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/end-rounded-bristles"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Bulu Berus Hujung Bulat</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/bulu-berus-arang"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Bulu Berus Arang</li>
+                                        </a><a href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/spiral-bristles"
+                                            data-v-b541cd72="" class="">
+                                            <li data-v-b541cd72="">Bulu Berus Spiral</li>
+                                        </a></ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-4 submenu-product__item" data-v-b541cd72="">
+                            <!---->
+                        </div>
+                        <div class="col-4 submenu-product__item" data-v-b541cd72="">
+                            <!---->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!---->
+        <div class="submenu__trigger" style="width: 840px; height: 947px;" data-v-b541cd72=""></div>
+    </div>
+    <div data-v-dc84ddce="" class="navigation" id="navigation-mobile">
+        <nav data-v-dc84ddce="" class="sticky is--mobile-nav">
+            <div data-v-dc84ddce="" class="container mobile__menu">
+                <div data-v-dc84ddce="" class="logo text-align--center"><a data-v-dc84ddce="" href="https://www.darlie.com.my/ms"
+                        class="nuxt-link-exact-active nuxt-link-active"><img data-v-dc84ddce=""
+                            srcset="//cms-cdn.darlie.com.hk/media/8365/darlie-newlogo-276x118.png 1x, //cms-cdn.darlie.com.hk/media/8365/darlie-newlogo-276x118.png 2x"
+                            alt="Darlie logo"></a></div>
+                <div data-v-dc84ddce="" class="menu__toggle" id="menu__toggle"></div>
+                <div data-v-dc84ddce="" id="mobile-menu__content" class="mobile-menu__content background-color--white text-transform--uppercase">
+                    <ul data-v-dc84ddce="">
+                        <li data-v-dc84ddce=""><a data-v-dc84ddce="" href="https://www.darlie.com.my/ms/articles" class="">Artikel</a></li>
+                        <li data-v-dc84ddce="" class="has--submenu">
+                            <div data-v-dc84ddce="" class="submenu-mobile__trigger is--product"></div> <a
+                            data-v-dc84ddce="" class="product-link" href="https://www.darlie.com.my/en/products/toothpaste">
+                                PRODUK</a>
+                            <ul data-v-dc84ddce="" class="active" style="display: none;">
+                                <li data-v-dc84ddce="">
+                                    <div data-v-dc84ddce="" class="submenu-mobile__trigger"></div>
+                                    <div data-v-dc84ddce="" class="padding--20-right">Ubat Gigi</div> <i
+                                        data-v-dc84ddce="" class="submenu__arrow faicon-minus"></i>
+                                    <div data-v-dc84ddce="" class="mobile-submenu active">
+                                        <div data-v-dc84ddce="" class="nav-product">
+                                            <div data-v-dc84ddce=""
+                                                class="nav-product__type text-transform--uppercase text-color--brand">
+                                                MENGIKUT FUNGSI</div>
+                                            <ul data-v-dc84ddce="" class="text-transform--capitalize">
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-function/fresh-breath"
+                                                        class="">Nafas Segar</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-function/gum-and-teeth-care"
+                                                        class="">Penjagaan Gusi &amp; Gigi</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-function/teeth-whitening"
+                                                        class="">Pemutihan Gigi</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-function/kids-care"
+                                                        class="">Penjagaan Gigi Kanak-kanak</a></li>
+                                            </ul>
+                                        </div>
+                                        <div data-v-dc84ddce="" class="nav-product">
+                                            <div data-v-dc84ddce=""
+                                                class="nav-product__type text-transform--uppercase text-color--brand">
+                                                MENGIKUT RANGKAIAN</div>
+                                            <ul data-v-dc84ddce="" class="text-transform--capitalize">
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-range/double-action"
+                                                        class="">Dwiaksi</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-range/gum-and-teeth-care"
+                                                        class="">Penjagaan Gusi &amp; Gigi</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-range/all-shiny-white"
+                                                        class="">All Shiny White</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-range/freshn-brite"
+                                                        class="">Fresh'N Brite</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothpaste/by-range/kids"
+                                                        class="">Kanak-Kanak</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li data-v-dc84ddce="">
+                                    <div data-v-dc84ddce="" class="submenu-mobile__trigger"></div>
+                                    <div data-v-dc84ddce="" class="padding--20-right">Layari Semua Produk Berus Gigi
+                                        Untuk Membersih Gigi | Darlie MY</div> <i data-v-dc84ddce=""
+                                        class="submenu__arrow faicon-minus"></i>
+                                    <div data-v-dc84ddce="" class="mobile-submenu active">
+                                        <div data-v-dc84ddce="" class="nav-product">
+                                            <div data-v-dc84ddce=""
+                                                class="nav-product__type text-transform--uppercase text-color--brand">
+                                                MENGIKUT FUNGSI</div>
+                                            <ul data-v-dc84ddce="" class="text-transform--capitalize">
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-range/power-toothbrush"
+                                                        class="">Berus Gigi Elektrik</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-range/essential-clean"
+                                                        class="">Essential Clean</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-range/advanced-deep-clean"
+                                                        class="">Advanced Deep Clean</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-range/kids"
+                                                        class="">Kanak-Kanak</a></li>
+                                            </ul>
+                                        </div>
+                                        <div data-v-dc84ddce="" class="nav-product">
+                                            <div data-v-dc84ddce=""
+                                                class="nav-product__type text-transform--uppercase text-color--brand">
+                                                MENGIKUT JENIS BERUS</div>
+                                            <ul data-v-dc84ddce="" class="text-transform--capitalize">
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/slim-tip-bristles"
+                                                        class="">Bulu Berus Hujung Tirus</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/end-rounded-bristles"
+                                                        class="">Bulu Berus Hujung Bulat</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/bulu-berus-arang"
+                                                        class="">Bulu Berus Arang</a></li>
+                                                <li data-v-dc84ddce=""><a data-v-dc84ddce=""
+                                                        href="https://www.darlie.com.my/ms/products/toothbrush/by-bristle/spiral-bristles"
+                                                        class="">Bulu Berus Spiral</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                        <li data-v-dc84ddce=""><a data-v-dc84ddce="" href="https://www.darlie.com.my/ms/oral-health" class="">
+                                KESIHATAN MULUT
+                            </a></li>
+                        <li data-v-dc84ddce=""><a data-v-dc84ddce="" href="https://www.darlie.com.my/ms/news" class="">
+                                TERKINI
+                            </a></li>
+                        <li data-v-dc84ddce=""><a data-v-dc84ddce="" href="https://www.darlie.com.my/ms/articles" class="">
+                                Artikel
+                            </a></li>
+                    </ul>
+                    <div data-v-dc84ddce="" class="social col-4 offset-4 margin--fix"><a data-v-dc84ddce=""
+                            href="https://www.facebook.com/DarlieMalaysia" aria-label="Facebook" target="_blank"
+                            rel="noopener" class="text-decoration--none">
+                            <div data-v-dc84ddce="" class="cursor--pointer"><i data-v-dc84ddce=""
+                                    class="faicon-facebook-square"></i></div>
+                        </a></div>
+                    <div data-v-dc84ddce="" class="select-box position--relative d-flex"><select id="mobile-language-select" data-v-dc84ddce=""
+                            aria-label="choose location">
+                            <!---->
+                            <!---->
+                            <option data-v-dc84ddce="" value="https://www.darlie.com.my/en" data-id="en-my">en</option>
+                            <option data-v-dc84ddce="" value="https://www.darlie.com.my/ms" data-id="en-ms">bm</option>
+                        </select> <i data-v-dc84ddce=""
+                            class="faicon-caret-down position--absolute text-color--gray-medium-light"></i></div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <script type="text/javascript">
+        document.getElementById('menu__toggle').addEventListener('click', function (e) {
+            e.preventDefault();
+            var element = e.target;
+            var contentElement = document.getElementById('mobile-menu__content');
+            if (element.className.indexOf('active') !== -1) {
+                element.className = element.className.replace(/\bactive\b/g, '');
+                contentElement.className = contentElement.className.replace(/\bactive\b/g, '');
+            } else {
+                element.className = element.className + ' active';
+                contentElement.className = contentElement.className + ' active';
+            }
+        });
+        document.getElementById('mobile-language-select').addEventListener('change', function (e) {
+            window.location.href = e.target.value;
+        });
+    </script>
+</body>
+
+</html>
